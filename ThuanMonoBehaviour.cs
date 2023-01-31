@@ -32,6 +32,11 @@ public class ThuanMonoBehaviour : MonoBehaviour
 
     }
 
+    protected virtual void OnEnable()
+    {
+        
+    }
+
     protected virtual void LoadComponents()
     {
         // for override
@@ -41,5 +46,6 @@ public class ThuanMonoBehaviour : MonoBehaviour
     {
 
     }
+    
 
 }

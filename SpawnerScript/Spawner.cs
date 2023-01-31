@@ -51,7 +51,6 @@ public abstract class Spawner : ThuanMonoBehaviour
             return null;
         }
 
-
         Transform newPrefab = this.GetObjectFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
 
@@ -90,5 +89,10 @@ public abstract class Spawner : ThuanMonoBehaviour
         obj.gameObject.SetActive(false);
     }
 
+    public virtual Transform RandomPrefab()
+    {
+        int rand = Random.Range(0, this.prefabs.Count);
+        return this.prefabs[rand];
+    }
     
 }
