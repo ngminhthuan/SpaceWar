@@ -36,10 +36,31 @@ public class BulletImpart : BulletAbstract
         this._rigidbody2D.gravityScale = 0;
         Debug.Log(transform.name + ": LoadRigidBody2D", gameObject);
     }
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
-        /*DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
-        if (damageReceiver == null) return;*/
-        BulletController.BulletDamageSender.Send(collision.transform);
+        if (other.transform.parent == this.bulletController.BulletShooter) return;
+
+        this.OnBulletImpactFx();
+        BulletController.BulletDamageSender.Send(other.transform);
+        
+    }
+
+    
+
+    protected virtual void OnBulletImpactFx()
+    {
+        string fxname = this.GetBulletImpactFxName();
+
+        //Get this position and the rotation of bullet in the Contact time
+        Vector3 hitPos = transform.position;
+        Quaternion hitRot = transform.rotation;
+
+        Transform fxOnBullet = FxSpawner.Instance.Spawn(fxname, hitPos, hitRot);
+        fxOnBullet.gameObject.SetActive(true);
+    }
+
+    protected virtual string GetBulletImpactFxName()
+    {
+        return FxSpawner.bulletImpactFx1;
     }
 }

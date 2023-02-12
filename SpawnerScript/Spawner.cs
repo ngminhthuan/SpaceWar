@@ -50,7 +50,11 @@ public abstract class Spawner : ThuanMonoBehaviour
             Debug.LogWarning("Prefab not found!! " + prefabName);
             return null;
         }
+        return Spawn(prefab,spawnPos,rotation);
+    }
 
+    public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation)
+    {
         Transform newPrefab = this.GetObjectFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
 

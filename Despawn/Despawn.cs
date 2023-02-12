@@ -18,7 +18,7 @@ public abstract class Despawn : ThuanMonoBehaviour
 
     public virtual void DespawnObject()
     {
-        Destroy(transform.parent.gameObject);
+        //Destroy(transform.parent.gameObject);
     }
 
     protected abstract bool CanDespawn();

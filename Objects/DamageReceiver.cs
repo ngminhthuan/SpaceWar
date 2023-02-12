@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageReceiver : ThuanMonoBehaviour
+public abstract class DamageReceiver : ThuanMonoBehaviour
 {
     [SerializeField] protected float CurrentHP;
     [SerializeField] protected float MaxHP;
@@ -13,7 +13,6 @@ public class DamageReceiver : ThuanMonoBehaviour
         base.ResetValue();
         this.Reborn();
     }
-
     public virtual void Reborn()
     {
         this.CurrentHP = this.MaxHP;
@@ -39,7 +38,7 @@ public class DamageReceiver : ThuanMonoBehaviour
 
     public virtual bool IsDead()
     {
-        if (this.CurrentHP <= 0) return true;
+        if (this.CurrentHP <= 0f) return true;
         return false;
     }
 
@@ -47,13 +46,9 @@ public class DamageReceiver : ThuanMonoBehaviour
     {
         if (!this.IsDead()) return;
         this.isDead = true;
-        
         this.OnDead();
     }
 
-    protected virtual void OnDead()
-    {
-      
-    }
+    protected abstract void OnDead();
     
 }
