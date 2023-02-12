@@ -6,13 +6,15 @@ public class BulletController : ThuanMonoBehaviour
 {
     [Header("Bullet Despawn")]
     [SerializeField] protected BulletDespawn bulletDespawn;
-
     public BulletDespawn BulletDespawn { get => bulletDespawn; }
 
     [Header("Bullet Damage Sender")]
     [SerializeField] protected BulletDamageSender bulletDamageSender;
-
     public BulletDamageSender BulletDamageSender { get => bulletDamageSender; }
+
+    [Header("Bullet Shooter")]
+    [SerializeField] protected Transform bulletShooter;
+    public Transform BulletShooter { get => bulletShooter; }
 
     protected override void LoadComponents()
     {
@@ -36,4 +38,8 @@ public class BulletController : ThuanMonoBehaviour
 
     }
 
+    public virtual void SetShooter(Transform shooter)
+    {
+        this.bulletShooter = shooter;
+    }
 }

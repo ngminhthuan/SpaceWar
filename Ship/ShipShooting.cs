@@ -27,6 +27,9 @@ public class ShipShooting : MonoBehaviour
         if (newBullet == null) return;
 
         newBullet.gameObject.SetActive(true);
+
+        BulletController bulletController = newBullet.GetComponent<BulletController>();
+        bulletController.SetShooter(transform.parent);
     }
 
     protected virtual bool CheckShoot()

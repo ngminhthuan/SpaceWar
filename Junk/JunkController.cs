@@ -16,10 +16,7 @@ public class JunkController : ThuanMonoBehaviour
     [SerializeField] protected JunkDamageReceiver junkDamageReceiver;
     public JunkDamageReceiver JunkDamageReceiver { get => junkDamageReceiver; }
 
-    [Header("Junk Animation")]
-    [SerializeField] protected JunkAnimation junkAnimation;
-    public JunkAnimation JunkAnimation { get => junkAnimation; }
-
+    [Header("Junk Stats")]
     [SerializeField] protected JunkSO junkSO;
 
     public JunkSO JunkSO => junkSO;
@@ -31,7 +28,6 @@ public class JunkController : ThuanMonoBehaviour
         base.LoadComponents();
         this.LoadModel();
         this.LoadJunkDespawn();
-        this.LoadJunkAnimation();
         this.LoadJunkDamageReceiver();
         this.LoadJunkSO();
     }
@@ -48,12 +44,6 @@ public class JunkController : ThuanMonoBehaviour
         if (this.junkDespawn != null) return;
         this.junkDespawn = GetComponentInChildren<JunkDespawn>();
         Debug.Log(transform.name + ": Load JunkDespawn", gameObject);
-    }
-    protected virtual void LoadJunkAnimation()
-    {
-        if (this.junkAnimation != null) return;
-        this.junkAnimation = GetComponentInChildren<JunkAnimation>();
-        Debug.Log(transform.name + ": Load JunkAnimation", gameObject);
     }
 
     protected virtual void LoadJunkDamageReceiver()
